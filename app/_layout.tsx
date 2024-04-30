@@ -7,6 +7,7 @@ export default () => {
       <Stack.Screen
         name="index"
         options={{
+          headerShown: false,
           title: "Welcome",
         }}
       />
