@@ -1,6 +1,7 @@
 import { View, Text, Button, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
+import { LinearGradient } from "expo-linear-gradient";
 
 const WelcomeScreen = () => {
   const router = useRouter();
@@ -19,49 +20,57 @@ const WelcomeScreen = () => {
   }
 
   return (
-    <View
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        paddingHorizontal: 50,
-        rowGap: 30,
-      }}>
-      <Text
+    <>
+      <LinearGradient
+        colors={["#E8F0FC", "#FCF1E8", "#FCE8FA", "#E8FCE8"]}
+        style={{ position: "absolute", width: "100%", height: "100%" }}
+      />
+      <View
         style={{
-          fontFamily: "maven",
-          fontSize: 30,
-          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          paddingHorizontal: 50,
+          rowGap: 30,
+          backgroundColor: "linear-gradient(180deg, #82A0CE, #DFB3CB, white)",
         }}>
-        Manage Your Daily Todo
-      </Text>
-      <Text
-        style={{
-          fontFamily: "light",
-          fontSize: 18,
-          textAlign: "center",
-        }}>
-        With our app, you can effectively manage your time
-      </Text>
-      <Pressable
-        style={{
-          backgroundColor: "#FF6961",
-          alignSelf: "center",
-          borderRadius: 10,
-        }}
-        onPress={() => router.push("./home")}>
         <Text
           style={{
-            color: "white",
-            fontFamily: "medium",
-            fontSize: 20,
-            padding: 15,
+            fontFamily: "maven",
+            fontSize: 30,
             textAlign: "center",
           }}>
-          Get Started
+          Manage Your Daily Todo
         </Text>
-      </Pressable>
-    </View>
+        <Text
+          style={{
+            fontFamily: "light",
+            fontSize: 18,
+            textAlign: "center",
+          }}>
+          With our app, you can effectively manage your time
+        </Text>
+        <Pressable
+          style={{
+            backgroundColor: "#FF6961",
+            alignSelf: "center",
+            borderRadius: 30,
+          }}
+          onPress={() => router.push("./home/[id]")}>
+          <Text
+            style={{
+              color: "white",
+              fontFamily: "medium",
+              fontSize: 20,
+              padding: 15,
+              paddingHorizontal: 30,
+              textAlign: "center",
+            }}>
+            Get Started
+          </Text>
+        </Pressable>
+      </View>
+    </>
   );
 };
 
