@@ -8,7 +8,12 @@ export default () => {
         name="index"
         options={{
           headerShown: false,
-          title: "Welcome",
+        }}
+      />
+      <Stack.Screen
+        name="auth"
+        options={{
+          headerShown: false,
         }}
       />
       <Stack.Screen
