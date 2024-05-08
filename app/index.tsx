@@ -48,7 +48,7 @@ const WelcomeScreen = () => {
             fontSize: 18,
             textAlign: "center",
           }}>
-          With our app, you can effectively manage your time
+          With our app, you can easily manage your time
         </Text>
         <Pressable
           style={{
@@ -56,7 +56,7 @@ const WelcomeScreen = () => {
             alignSelf: "center",
             borderRadius: 30,
           }}
-          onPress={() => router.push("./home/[id]")}>
+          onPress={() => router.push("./auth")}>
           <Text
             style={{
               color: "white",

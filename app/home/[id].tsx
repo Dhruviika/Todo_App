@@ -58,9 +58,7 @@ const HomeScreen = () => {
   const [addTodo, setAddTodo] = useState(false);
   const [inputText, setInputText] = useState("");
 
-  // const { id } = useLocalSearchParams();
-
-  const id = 3;
+  const { id } = useLocalSearchParams();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -104,7 +102,9 @@ const HomeScreen = () => {
         }}>
         <Text style={{ fontFamily: "maven", fontSize: 30 }}>Hi, Igor!</Text>
         <Image
-          source={require("../../assets/profile/giraffe.png")}
+          source={{
+            uri: `https://api.dicebear.com/8.x/avataaars/svg?seed=${id}`,
+          }}
           style={{ width: 60, height: 60 }}
         />
       </View>

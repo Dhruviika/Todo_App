@@ -2,10 +2,10 @@
   "expo": {
     "name": "ReactNativeTodo",
     "slug": "ReactNativeTodo",
-    "scheme": "ReactNativeTodo",
+    "scheme": "reactnativetodo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -18,12 +18,24 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dhruvika148.ReactNativeTodo"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/splash.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6e7a5535-1392-4009-9d1f-9fda5de14589"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6e7a5535-1392-4009-9d1f-9fda5de14589"
     }
   }
 }
