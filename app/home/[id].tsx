@@ -14,30 +14,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { getUser } from "../../axios/user";
 import { createTodo, getTodos, deleteTodo, updateTodo } from "../../axios/todo";
-import { set } from "date-fns";
-
-// const dummyTasks = [
-//   {
-//     id: 1,
-//     title: "Finish the design",
-//     isCompleted: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Prepare a presentation",
-//     isCompleted: false,
-//   },
-//   {
-//     id: 3,
-//     title: "Call John",
-//     isCompleted: false,
-//   },
-//   {
-//     id: 4,
-//     title: "Buy groceries",
-//     isCompleted: false,
-//   },
-// ];
 
 interface Todo {
   id: number;
@@ -103,9 +79,14 @@ const HomeScreen = () => {
         <Text style={{ fontFamily: "maven", fontSize: 30 }}>Hi, Igor!</Text>
         <Image
           source={{
-            uri: `https://api.dicebear.com/8.x/avataaars/svg?seed=${id}`,
+            uri: `https://api.dicebear.com/8.x/avataaars/png?seed=${id}`,
           }}
-          style={{ width: 60, height: 60 }}
+          style={{
+            width: 50,
+            height: 50,
+            backgroundColor: "#FFDDDD",
+            borderRadius: 50,
+          }}
         />
       </View>
       <View

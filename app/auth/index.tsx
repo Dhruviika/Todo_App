@@ -1,21 +1,57 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+  Alert,
+} from "react-native";
 import { signIn } from "../../axios/user";
+
+type FormFields = {
+  username: string;
+  password: string;
+};
+
+export const showAlertDialog = () => {
+  Alert.alert("Invalid Credentials", "Please enter valid credentials", [
+    {
+      text: "OK",
+    },
+  ]);
+};
 
 const LoginScreen = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const validateForm = () => {
+    if (username.length === 0 || password.length === 0) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSignIn = async () => {
+    if (!validateForm()) {
+      showAlertDialog();
+      return;
+    }
+
+    setLoading(true);
     const res = await signIn(username, password);
-    console.log(res);
     if (res) {
       router.push(`../home/${res.id}`);
     }
+    setLoading(false);
   };
+
   return (
     <>
       <LinearGradient
@@ -49,7 +85,6 @@ const LoginScreen = () => {
             flex: 2,
             rowGap: 20,
             paddingHorizontal: 20,
-
             justifyContent: "center",
           }}>
           <TextInput
@@ -59,6 +94,7 @@ const LoginScreen = () => {
             onChange={(e) => setUsername(e.nativeEvent.text)}
             style={styles.inputContainer}
           />
+
           <TextInput
             placeholder="Password"
             placeholderTextColor="grey"
@@ -66,6 +102,7 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.nativeEvent.text)}
             style={styles.inputContainer}
           />
+
           <View
             style={{
               flexDirection: "row",
@@ -82,7 +119,15 @@ const LoginScreen = () => {
           </View>
         </View>
 
-        <View style={{ flex: 3 }}>
+        {loading && (
+          <ActivityIndicator size="large" color="#FF6961" style={{ flex: 1 }} />
+        )}
+
+        <View
+          style={{
+            flex: 2,
+            marginTop: 20,
+          }}>
           <Pressable
             onPress={handleSignIn}
             style={{

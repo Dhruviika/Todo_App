@@ -1,22 +1,45 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import { signUp } from "../../axios/user";
+import { showAlertDialog } from ".";
 
 const SignUpScreen = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
+  const validateForm = () => {
+    if (username.length === 0 || password.length === 0 || name.length === 0) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSignup = async () => {
+    if (!validateForm()) {
+      showAlertDialog();
+      return;
+    }
+    setLoading(true);
     const res = await signUp(name, username, password);
     console.log(res);
     if (res) {
       router.push("../home");
     }
+    setLoading(false);
   };
 
   return (
@@ -29,7 +52,7 @@ const SignUpScreen = () => {
         <View
           style={{
             justifyContent: "flex-end",
-            flex: 2,
+            flex: 1,
             padding: 25,
           }}>
           <Text
@@ -49,7 +72,7 @@ const SignUpScreen = () => {
         </View>
         <View
           style={{
-            flex: 3,
+            flex: 2,
             rowGap: 20,
             paddingHorizontal: 20,
             justifyContent: "center",
@@ -93,7 +116,11 @@ const SignUpScreen = () => {
           </View>
         </View>
 
-        <View style={{ flex: 3 }}>
+        {loading && (
+          <ActivityIndicator size="large" color="#FF6961" style={{ flex: 1 }} />
+        )}
+
+        <View style={{ flex: 1, marginTop: 20 }}>
           <Pressable
             onPress={handleSignup}
             style={{
