@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { apiUrl } from "./index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const signUp = async (
   firstName: string,
@@ -7,12 +8,16 @@ export const signUp = async (
   password: string
 ) => {
   try {
-    const res = await axios.post(`${apiUrl}/users`, {
+    const res = await axios.post(`${apiUrl}/users/signup`, {
       username,
       password,
       firstName,
     });
-    return res.data;
+    if (res?.data?.token) {
+      await AsyncStorage.setItem("token", res.data.token);
+    }
+
+    return res?.data;
   } catch (error) {
     console.log(error);
   }
@@ -28,24 +33,34 @@ export const signUp = async (
 // };
 
 export const signIn = async (username: string, password: string) => {
-  console.log("username", username);
-  console.log("password", password);
+  // console.log("username", username);
+  // console.log("password", password);
   try {
-    const res = await axios.get(`${apiUrl}/users`, {
-      params: {
-        username,
-        password,
-      },
+    const res = await axios.post(`${apiUrl}/users/login`, {
+      username,
+      password,
     });
-    return res.data;
+
+    if (res?.data?.token) {
+      await AsyncStorage.setItem("token", res.data.token);
+    }
+
+    return res?.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getUser = async (id: number) => {
+export const getUser = async () => {
+  const token = await AsyncStorage.getItem("token");
+  console.log("token", token);
+  const config: AxiosRequestConfig = {
+    headers: {
+      "auth-token": token,
+    },
+  };
   try {
-    const res = await axios.get(`${apiUrl}/users/${id}`);
+    const res = await axios.get(`${apiUrl}/users/me`, config);
     return res.data;
   } catch (error) {
     console.log(error);

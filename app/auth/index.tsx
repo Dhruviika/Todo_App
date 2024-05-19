@@ -17,12 +17,20 @@ type FormFields = {
   password: string;
 };
 
-export const showAlertDialog = () => {
-  Alert.alert("Invalid Credentials", "Please enter valid credentials", [
-    {
-      text: "OK",
-    },
-  ]);
+export const showAlertDialog = (message: string) => {
+  if (!message) {
+    Alert.alert("Try Again.", "", [
+      {
+        text: "OK",
+      },
+    ]);
+  } else {
+    Alert.alert(message, "", [
+      {
+        text: "OK",
+      },
+    ]);
+  }
 };
 
 const LoginScreen = () => {
@@ -40,15 +48,19 @@ const LoginScreen = () => {
 
   const handleSignIn = async () => {
     if (!validateForm()) {
-      showAlertDialog();
+      showAlertDialog("Invalid username or password.");
       return;
     }
 
     setLoading(true);
     const res = await signIn(username, password);
-    if (res) {
-      router.push(`../home/${res.id}`);
+
+    if (!res?.success) {
+      showAlertDialog(res?.message);
+    } else {
+      router.push("../home");
     }
+
     setLoading(false);
   };
 
@@ -97,6 +109,7 @@ const LoginScreen = () => {
 
           <TextInput
             placeholder="Password"
+            secureTextEntry={true}
             placeholderTextColor="grey"
             value={password}
             onChange={(e) => setPassword(e.nativeEvent.text)}

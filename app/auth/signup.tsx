@@ -16,7 +16,6 @@ const SignUpScreen = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -30,15 +29,18 @@ const SignUpScreen = () => {
 
   const handleSignup = async () => {
     if (!validateForm()) {
-      showAlertDialog();
+      showAlertDialog("Invalid Credentials.");
       return;
     }
     setLoading(true);
     const res = await signUp(name, username, password);
-    console.log(res);
-    if (res) {
+
+    if (!res?.success) {
+      showAlertDialog(res?.message);
+    } else {
       router.push("../home");
     }
+
     setLoading(false);
   };
 
