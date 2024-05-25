@@ -97,6 +97,7 @@ const SignUpScreen = () => {
             placeholder="Password"
             placeholderTextColor="grey"
             value={password}
+            secureTextEntry={true}
             onChange={(e) => setPassword(e.nativeEvent.text)}
             style={styles.inputContainer}
           />

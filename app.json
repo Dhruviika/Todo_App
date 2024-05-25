@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MyTodo",
-    "slug": "mytodo",
+    "name": "TaskTick",
+    "slug": "tasktick2",
     "scheme": "reactnativetodo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -23,21 +21,22 @@
         "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.dhruvika148.mytodo"
+      "package": "com.dhruvika148.tasktick2"
     },
     "web": {
       "favicon": "./assets/splash.png"
     },
     "extra": {
       "eas": {
-        "projectId": "7c737233-1730-4f81-806e-124ff5437f65"
+        "projectId": "76735159-1f23-4753-8aa4-be81be22c973"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/7c737233-1730-4f81-806e-124ff5437f65"
-    }
+      "url": "https://u.expo.dev/76735159-1f23-4753-8aa4-be81be22c973"
+    },
+    "owner": "dhruvika148"
   }
 }
