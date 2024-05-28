@@ -1,6 +1,24 @@
 
 # TaskTick
 
+
+
+
+https://github.com/Dhruviika/Todo_App/assets/93656403/54f428d6-e32a-4218-b714-12aec0fe4d2c
+
+
+
+
+
+https://github.com/Dhruviika/Todo_App/assets/93656403/88f5542b-8cd6-453d-932b-f591c745b687
+
+
+
+
+https://github.com/Dhruviika/Todo_App/assets/93656403/df7bb9a1-4da6-4717-aaaf-f9370f49e653
+
+
+
 TaskTick is a user-friendly to-do application designed to streamline your daily tasks with a beautiful and intuitive interface.  Stay organized and focused with features like:
 
 - Login/Signup: Create an account or log in to access your personalized task list.
