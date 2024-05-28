@@ -23,9 +23,9 @@ TaskTick is a user-friendly to-do application designed to streamline your daily 
 
 
 
-Securely storing and handling JWT tokens for user authentication.
-Building Android app packages (APK) using EAS Build.
-Effectively debugging production issues with Android Studio Logcat.
+- Securely locally storing and handling JWT tokens for user authentication.
+- Building Android app packages (APK) using EAS Build.
+- Effectively debugging production issues with Android Studio Logcat.
 
 ## Installation
 
